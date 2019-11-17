@@ -1,0 +1,16 @@
+{
+    "name": "Jarvis for Medusa in Balena",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "balena-cli",
+    "workspaceFolder": "/workspace",
+
+    "settings": {
+        "terminal.integrated.automationShell.linux": "/bin/bash"
+    },
+
+    // "postCreateCommand": ". /workspace/scripts/add-keys.sh"
+
+    "extensions": [
+        "ms-azuretools.vscode-docker",
+    ]
+}

@@ -1,0 +1,6 @@
+balena_cli_configs/token
+ssh-keys/token
+rover/packages/*.tbz2
+rover/packages/*.deb
+ssh-keys/*.pub
+ssh-keys/id_balena
