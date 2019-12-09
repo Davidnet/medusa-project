@@ -12,6 +12,8 @@ FILE_LIST=(
     "cuda-repo-l4t-9-0-local_9.0.252-1_arm64.deb"
     "libcudnn7_7.1.5.14-1+cuda9.0_arm64.deb"
     "libcudnn7-dev_7.1.5.14-1+cuda9.0_arm64.deb"
+    "libnvinfer4_4.1.3-1+cuda9.0_arm64.deb"
+    "libnvinfer-dev_4.1.3-1+cuda9.0_arm64.deb"
 )
 
 if [ -f "Tegra186_Linux_R28.2.1_aarch64.tbz2" ]; then

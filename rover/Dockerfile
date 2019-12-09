@@ -1,4 +1,4 @@
-FROM balenalib/jetson-tx2-ubuntu:xenial as buildstep
+FROM balenalib/jetson-tx2-ubuntu:xenial
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y wget bzip2 && \
@@ -18,7 +18,10 @@ RUN \
     libcudnn7-dev_7.1.5.14-1+cuda9.0_arm64.deb && \
     apt-key add /var/cuda-repo-9-0-local/*.pub && \
     apt-get update && \
-    apt-get install cuda-toolkit-9-0 -y && \
+    apt-get install cuda-toolkit-9-0 cuda-libraries-dev-9-0 -y && \
+    dpkg -i libnvinfer4_4.1.3-1+cuda9.0_arm64.deb \
+    libnvinfer-dev_4.1.3-1+cuda9.0_arm64.deb && \
+    apt-get install  libnvinfer-dev && \
     rm -rf *.deb && \
     dpkg --remove cuda-repo-l4t-9-0-local && \
     dpkg -P cuda-repo-l4t-9-0-local && \
@@ -50,10 +53,10 @@ RUN \
 
 
 
-FROM balenalib/jetson-tx2-ubuntu:xenial as final
+# FROM balenalib/jetson-tx2-ubuntu:xenial as final
 
-COPY --from=buildstep /usr /usr
-WORKDIR /usr/src/app
+# COPY --from=buildstep /usr /usr
+# WORKDIR /usr/src/app
 
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -138,5 +141,6 @@ RUN \
 # Use this part to add enviroment variables that do not modify the cache
 # Start a udev service
 ENV UDEV=1
+
 
 CMD [ "bash", "balena_start.sh" ]
